@@ -5,7 +5,7 @@ Ethixweb is a static website with a Supabase-backed enquiry form and a protected
 ## Admin dashboard
 
 - Local URL: `http://127.0.0.1:8000/admin.html` (or `http://localhost:8000/admin.html`)
-- Live URL: `https://YOUR_LIVE_DOMAIN/admin.html` (replace this with the domain where you deploy the site). The live domain has not been provided or configured in this project yet.
+- Live URL: `https://arshiasuri.github.io/ethixweb-assessment/admin.html`
 - Short `/admin/` URL: redirects to `admin.html`.
 
 The admin page files are static, so someone may be able to load the sign-in page itself. That does **not** grant access to enquiries: the database only returns or updates leads for a signed-in user whose UUID is in `public.admin_users`. Never rely on hiding a static page URL as security.
@@ -126,4 +126,7 @@ Visitors submit enquiries on `contact.html`. The browser does basic form validat
 - **“This account is not authorized”**: run the allowlist insert and verify `is_admin = true`.
 - **Enquiries do not submit on the live site**: check that the `contact` function is deployed, its required secrets are set, and the exact production origin is in `ALLOWED_ORIGINS`.
 - **Invitation email doesn't arrive**: check spam and the project's Auth email/SMTP configuration and delivery limits.
-- **No exact live admin URL yet**: deploy the website first, then replace `YOUR_LIVE_DOMAIN` in Auth URL settings and `ALLOWED_ORIGINS`, and use `https://YOUR_LIVE_DOMAIN/admin.html`.
+- **Live admin URL**: `https://arshiasuri.github.io/ethixweb-assessment/admin.html`.
+
+
+For GitHub Pages, the Supabase Edge Function secret `ALLOWED_ORIGINS` must include `https://arshiasuri.github.io` (without a trailing slash) or browser enquiry submissions will fail CORS. Add your local development origin as well when testing locally.
