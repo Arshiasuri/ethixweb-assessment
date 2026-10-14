@@ -11,6 +11,26 @@
 The website is public. The admin page is accessible, but viewing or managing leads requires an authorized Supabase admin account.
 Ethixweb is a static website with a Supabase-backed enquiry form and a protected admin dashboard. The admin uses Supabase Auth for sign-in, an explicit `public.admin_users` allowlist, and PostgreSQL row-level security (RLS) to protect lead data.
 
+
+
+## Assessment review guide
+
+### Review the public website and enquiry flow
+
+1. Open the [live website](https://arshiasuri.github.io/ethixweb-assessment/) and browse the pages using the navigation.
+2. Open the [enquiry form](https://arshiasuri.github.io/ethixweb-assessment/contact.html), enter a test name, a valid email address you can access, choose a service, describe a sample project, accept the contact consent, and submit.
+3. A success message confirms that the enquiry was accepted by the backend. Avoid entering sensitive or real customer information during assessment.
+
+### Review the admin dashboard
+
+1. Open the [admin sign-in page](https://arshiasuri.github.io/ethixweb-assessment/admin.html).
+2. Admin access is restricted to accounts explicitly authorized in Supabase. There is no public registration and this README intentionally does not publish credentials.
+3. To request reviewer access, send the reviewer email address to the project owner privately. The owner must create or authorize that account in Supabase and send invitation/reset instructions directly to that email. Do not publish passwords or invitation links.
+4. After the reviewer sets their own password, sign in with that email. The dashboard supports viewing and searching enquiries, filtering by service or status, paging through results, opening enquiry details, and updating lead status.
+5. Submit a test enquiry first if the dashboard has no leads to display.
+
+If sign-in says **“This signed-in account is not authorized”**, the account authenticated successfully but needs to be added to `public.admin_users` by the project owner. If it says **“Sign-in failed”**, confirm the correct Supabase account/email and reset or set its password using the newest email link.
+
 ## Admin dashboard
 
 - Local URL: `http://127.0.0.1:8000/admin.html` (or `http://localhost:8000/admin.html`)
