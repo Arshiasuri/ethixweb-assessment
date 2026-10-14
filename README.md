@@ -56,7 +56,7 @@ The checked-in `supabase/config.toml` disables legacy JWT verification for this 
 In the Supabase dashboard, open **Edge Functions → Secrets** and set:
 
 - `CONTACT_RATE_LIMIT_SECRET`: a randomly generated value with at least 32 characters.
-- `ALLOWED_ORIGINS`: comma-separated site origins, without trailing slashes. For local development include the origin you actually use, such as `http://localhost:8000`. For production also include `https://YOUR_LIVE_DOMAIN`.
+- `ALLOWED_ORIGINS`: comma-separated site origins, without trailing slashes. For local development include the origin you actually use, such as `http://localhost:8000`. For production also include `https://arshiasuri.github.io`.
 
 Supabase injects `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` for the function. Do not copy the service-role key into `.env`, website JavaScript, hosting build variables, or this README. The contact endpoint must be deployed and `ALLOWED_ORIGINS` must include the exact deployed site origin or browser submissions will fail.
 
@@ -64,9 +64,9 @@ Supabase injects `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` for the function
 
 In **Authentication → URL Configuration**:
 
-- Set **Site URL** to the deployed website origin, such as `https://YOUR_LIVE_DOMAIN`.
+- Set **Site URL** to the deployed website origin, such as `https://arshiasuri.github.io`.
 - Add redirect URLs for the deployed admin page and each local development address you use, for example:
-  - `https://YOUR_LIVE_DOMAIN/admin.html`
+  - `https://arshiasuri.github.io/ethixweb-assessment/admin.html`
   - `http://localhost:8000/admin.html`
   - `http://127.0.0.1:8000/admin.html`
 
@@ -101,7 +101,7 @@ Open the admin URL and sign in with that Supabase Auth user's email and password
 
 Use a dedicated company/evaluator email address or test inbox, not your personal account:
 
-1. In **Authentication → URL Configuration**, set **Site URL** to the deployed site origin and add `https://YOUR_LIVE_DOMAIN/admin.html` to **Redirect URLs**. Then in **Authentication → Users**, choose **Add user → Send invitation** and enter the evaluator's email. Supabase may return the invite link to the site root; after accepting, the evaluator opens `/admin.html`.
+1. In **Authentication → URL Configuration**, set **Site URL** to the deployed site origin and add `https://arshiasuri.github.io/ethixweb-assessment/admin.html` to **Redirect URLs**. Then in **Authentication → Users**, choose **Add user → Send invitation** and enter the evaluator's email. Supabase may return the invite link to the site root; after accepting, the evaluator opens `/admin.html`.
 2. After Supabase creates the user, run the same allowlist insert in SQL Editor, replacing `YOUR_ADMIN_EMAIL` with the evaluator's email. Verify that the query returns `is_admin = true`.
 3. Supabase sends the invitation to the evaluator's email. They follow the link, open the live admin URL, and set their own password in the dashboard. The dashboard URL, account email, and permission setup are configurable; no demo password is stored in this project or published here.
 4. To remove access later, run this in SQL Editor after replacing the email. Their Auth account can remain, but without the allowlist row it cannot read or update leads:
