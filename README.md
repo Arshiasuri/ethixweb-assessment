@@ -1,5 +1,14 @@
 # Ethixweb
 
+
+
+## Live links
+
+- [Open the live website](https://arshiasuri.github.io/ethixweb-assessment/)
+- [Send an enquiry](https://arshiasuri.github.io/ethixweb-assessment/contact.html)
+- [Open the admin sign-in page](https://arshiasuri.github.io/ethixweb-assessment/admin.html)
+
+The website is public. The admin page is accessible, but viewing or managing leads requires an authorized Supabase admin account.
 Ethixweb is a static website with a Supabase-backed enquiry form and a protected admin dashboard. The admin uses Supabase Auth for sign-in, an explicit `public.admin_users` allowlist, and PostgreSQL row-level security (RLS) to protect lead data.
 
 ## Admin dashboard
