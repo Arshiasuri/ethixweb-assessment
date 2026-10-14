@@ -159,3 +159,8 @@ Visitors submit enquiries on `contact.html`. The browser does basic form validat
 
 
 For GitHub Pages, the Supabase Edge Function secret `ALLOWED_ORIGINS` must include `https://arshiasuri.github.io` (without a trailing slash) or browser enquiry submissions will fail CORS. Add your local development origin as well when testing locally.
+
+
+- **Email says the account already exists**: do not invite it again; use Supabase password recovery for the existing user, then authorize that user in `public.admin_users`.
+- **Password recovery is rate-limited**: wait for the cooldown shown by Supabase before requesting another email. Use only the newest message; older links may be expired or already used.
+- **Email link opens localhost**: set Supabase **Authentication → URL Configuration** Site URL to `https://arshiasuri.github.io/ethixweb-assessment/admin.html`, confirm the live admin page is in Redirect URLs, and request a fresh email.
