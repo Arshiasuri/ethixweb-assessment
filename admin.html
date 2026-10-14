@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f5f1"><meta name="robots" content="noindex,nofollow">
+  <title>Enquiries — Ethixweb Admin</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><script src="site-config.js?v=20261014"></script><script type="module" src="admin.js?v=20261014-auth"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">e</span>ethixweb <span class="admin-word">ADMIN</span></a><a class="nav-cta" href="index.html">View website <span>↗</span></a></div></header>
+  <main class="container admin-shell" id="main">
+    <section class="admin-intro"><p class="eyebrow">Private workspace</p><h1>Enquiry dashboard</h1><p>View and manage incoming project enquiries.</p></section>
+    <section class="admin-panel" id="admin-login-panel" hidden>
+      <h2>Sign in</h2><p>Authorized team members only.</p>
+      <form id="admin-login-form" class="contact-form">
+        <div class="field field-full"><label for="admin-email">Email</label><input id="admin-email" type="email" autocomplete="username" required></div>
+        <div class="field field-full"><label for="admin-password">Password</label><input id="admin-password" type="password" autocomplete="current-password" required></div>
+        <p class="form-status field-full" id="admin-login-status" role="status" hidden></p>
+        <div class="field-full"><button class="button button-red" type="submit">Sign in <span>↗</span></button></div>
+      </form>
+    </section>
+    <section class="notice" id="admin-config-notice" hidden>Admin is not configured yet. Set <code>ETHIXWEB_SUPABASE_URL</code> and <code>ETHIXWEB_SUPABASE_ANON_KEY</code>, generate <code>site-config.js</code> using the setup script, and complete the Supabase setup in README.</section>
+    <section id="admin-app" hidden>
+      <div class="admin-toolbar"><p id="admin-user"></p><button class="button button-outline" id="admin-set-password" type="button">Set/change password</button><button class="button button-outline" id="admin-sign-out" type="button">Sign out</button></div>
+      <form class="admin-panel" id="admin-password-form" hidden>
+        <h2>Set or change your password</h2>
+        <p>Use this after accepting an admin invitation, or whenever you want to change your password.</p>
+        <div class="field field-full"><label for="admin-new-password">New password</label><input id="admin-new-password" type="password" autocomplete="new-password" minlength="12" required><small>Use at least 12 characters and keep it private.</small></div>
+        <div class="field field-full"><label for="admin-confirm-password">Confirm new password</label><input id="admin-confirm-password" type="password" autocomplete="new-password" minlength="12" required></div>
+        <p class="form-status field-full" id="admin-password-status" role="status" hidden></p>
+        <div class="field-full"><button class="button button-red" type="submit">Update password</button></div>
+      </form>
+      <div class="status-counts" id="status-counts"></div>
+      <form class="admin-filter" id="lead-filter">
+        <label for="lead-search">Search</label><input id="lead-search" type="search" placeholder="Name or email">
+        <label for="lead-service-filter">Service</label><select id="lead-service-filter"><option value="">All services</option><option>Website design &amp; development</option><option>AI automation &amp; booking agents</option><option>CRM integrations</option><option>SEO &amp; paid advertising</option><option>Web applications</option><option>Maintenance &amp; digital operations</option><option>Not sure yet</option></select>
+        <label for="lead-status-filter">Status</label><select id="lead-status-filter"><option value="">All statuses</option><option value="new">New</option><option value="contacted">Contacted</option><option value="qualified">Qualified</option><option value="closed">Closed</option></select>
+        <button class="button" type="submit">Apply filters</button>
+      </form>
+      <p class="admin-feedback" id="admin-feedback" role="status"></p>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Service</th><th>Status</th><th>Submitted</th></tr></thead><tbody id="leads-body"></tbody></table></div>
+      <div class="pagination"><button class="button button-outline" id="previous-page" type="button">← Previous</button><span id="page-display"></span><button class="button button-outline" id="next-page" type="button">Next →</button></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-bottom"><span>© <span data-year></span> Ethixweb · Admin</span><a href="privacy.html">Privacy</a></div></footer>
+  <script>document.querySelector("[data-year]").textContent=String(new Date().getFullYear());</script>
+</body>
+</html>
